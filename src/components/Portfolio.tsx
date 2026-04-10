@@ -46,7 +46,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
   const [hovered, setHovered] = useState(false);
   
   const projectLinks: { [key: string]: { url: string; isDownload?: boolean } } = {
-    'FitTrack - Fitness App': { url: '/fittrack/index.html', isDownload: true },
+    'FitTrack - Fitness App': { url: '/AA-ELEMENTS-WEB-PORTFOLIO/fittrack/index.html', isDownload: true },
     'KAY-FITS E-commerce': { url: 'https://djxdtho.github.io/Kayfits/' },
   };
   const linkConfig = projectLinks[project.title] || { url: '#' };
