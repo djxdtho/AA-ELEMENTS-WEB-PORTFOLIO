@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitTrack - Download | AA Elements</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .bg-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.3;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .blob-1 {
+      width: 600px;
+      height: 600px;
+      background: #00d4ff;
+      top: -200px;
+      left: -200px;
+      animation-delay: 0s;
+    }
+
+    .blob-2 {
+      width: 500px;
+      height: 500px;
+      background: #7b2ff7;
+      bottom: -150px;
+      right: -150px;
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      width: 400px;
+      height: 400px;
+      background: #00ff88;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -10s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(50px, -50px) scale(1.1); }
+      50% { transform: translate(-30px, 30px) scale(0.9); }
+      75% { transform: translate(-50px, -30px) scale(1.05); }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #00d4ff;
+      text-decoration: none;
+      font-size: 16px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      color: #fff;
+      transform: translateX(-5px);
+    }
+
+    .download-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 50px;
+      text-align: center;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .app-icon {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+    }
+
+    .app-icon i {
+      font-size: 60px;
+      color: #fff;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .version {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .feature-tag {
+      background: rgba(0, 212, 255, 0.15);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      color: #00d4ff;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+      color: #fff;
+      text-decoration: none;
+      padding: 20px 50px;
+      border-radius: 60px;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(0, 212, 255, 0.5);
+    }
+
+    .download-btn i {
+      font-size: 24px;
+    }
+
+    .file-info {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .info-item {
+      text-align: center;
+    }
+
+    .info-item .label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .info-item .value {
+      font-size: 18px;
+      font-weight: 600;
+      color: #00d4ff;
+    }
+
+    .warning {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .warning i {
+      font-size: 24px;
+      color: #ffc107;
+    }
+
+    .warning p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .download-card {
+        padding: 30px 20px;
+      }
+
+      .app-icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 24px;
+      }
+
+      .app-icon i {
+        font-size: 50px;
+      }
+
+      .download-btn {
+        padding: 15px 35px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shapes">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+    <a href="/#portfolio" class="back-btn">
+      <i class="fas fa-arrow-left"></i>
+      Back to Portfolio
+    </a>
+
+    <div class="download-card">
+      <div class="app-icon">
+        <i class="fas fa-dumbbell"></i>
+      </div>
+
+      <h1>FitTrack</h1>
+      <p class="version">Version 1.0.0 • Windows</p>
+
+      <p class="description">
+        A production-ready fitness tracking application. Track workouts, monitor progress, 
+        get AI-powered coaching, and achieve your fitness goals with comprehensive analytics.
+      </p>
+
+      <div class="features">
+        <span class="feature-tag"><i class="fas fa-check"></i> Workout Tracking</span>
+        <span class="feature-tag"><i class="fas fa-check"></i> AI Coach</span>
+        <span class="feature-tag"><i class="fas fa-check"></i> Analytics</span>
+        <span class="feature-tag"><i class="fas fa-check"></i> History</span>
+        <span class="feature-tag"><i class="fas fa-check"></i> Exercise Library</span>
+      </div>
+
+      <a href="/FitTrack-Setup.exe" download class="download-btn">
+        <i class="fas fa-download"></i>
+        Download Installer
+      </a>
+
+      <div class="file-info">
+        <div class="info-item">
+          <div class="label">Size</div>
+          <div class="value">~22 MB</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Platform</div>
+          <div class="value">Windows</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Type</div>
+          <div class="value">Installer</div>
+        </div>
+      </div>
+
+      <div class="warning">
+        <i class="fas fa-shield-alt"></i>
+        <p>
+          <strong>First time:</strong> Windows SmartScreen may show a warning. Click "More info" 
+          and "Run anyway". This is normal for new applications.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
