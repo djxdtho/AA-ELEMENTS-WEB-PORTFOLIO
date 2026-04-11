@@ -33,6 +33,15 @@ export const projects: Project[] = [
     image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["HTML", "CSS", "JavaScript"],
   },
+  {
+    id: 3,
+    title: "Zari Restaurant Landing",
+    category: "Restaurant Landing",
+    description: "Premium restaurant landing page with floating food animations, dark theme, menu, gallery, and reservation system.",
+    image: "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: ["React", "Tailwind", "Animation"],
+    status: "In Progress",
+  },
 ];
 
 export const services: Service[] = [

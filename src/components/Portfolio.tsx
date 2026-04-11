@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Download, CheckCircle } from 'lucide-react';
+import { ExternalLink, Download, CheckCircle, Clock } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { SectionLabel } from './About';
 import { projects } from '../data/portfolioData';
@@ -25,13 +25,13 @@ export default function Portfolio() {
               className="text-white font-black mt-4"
               style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.1, letterSpacing: '-0.02em' }}
             >
-              Completed
+              Selected
               <br />
               <span style={{ color: '#06b6d4' }}>projects.</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
@@ -50,6 +50,52 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
     'KAY-FITS E-commerce': { url: 'https://djxdtho.github.io/Kayfits/' },
   };
   const linkConfig = projectLinks[project.title] || { url: '#' };
+
+  const getBadge = () => {
+    if ('status' in project && project.status === 'In Progress') {
+      return (
+        <div
+          className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style={{
+            background: 'rgba(251,191,36,0.9)',
+            color: '#000',
+          }}
+        >
+          <Clock size={12} />
+          In Progress
+        </div>
+      );
+    }
+    if (linkConfig.isDownload) {
+      return (
+        <a
+          href={linkConfig.url}
+          className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full transition-all duration-300"
+          style={{
+            background: hovered ? '#06b6d4' : 'rgba(6,182,212,0.8)',
+            color: '#001f2d',
+            transform: hovered ? 'scale(1.05)' : 'scale(1)',
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Download size={12} />
+          Download App
+        </a>
+      );
+    }
+    return (
+      <div
+        className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full"
+        style={{
+          background: 'rgba(34,197,94,0.9)',
+          color: '#fff',
+        }}
+      >
+        <CheckCircle size={12} />
+        Finished
+      </div>
+    );
+  };
 
   return (
     <div
@@ -77,32 +123,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
           }}
         />
 
-        {linkConfig.isDownload ? (
-          <a
-            href={linkConfig.url}
-            className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full transition-all duration-300"
-            style={{
-              background: hovered ? '#06b6d4' : 'rgba(6,182,212,0.8)',
-              color: '#001f2d',
-              transform: hovered ? 'scale(1.05)' : 'scale(1)',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Download size={12} />
-            Download App
-          </a>
-        ) : (
-          <div
-            className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full"
-            style={{
-              background: 'rgba(34,197,94,0.9)',
-              color: '#fff',
-            }}
-          >
-            <CheckCircle size={12} />
-            Finished
-          </div>
-        )}
+        {getBadge()}
 
         <a
           href={linkConfig.url}
