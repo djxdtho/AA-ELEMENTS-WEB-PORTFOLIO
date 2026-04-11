@@ -48,6 +48,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
   const projectLinks: { [key: string]: { url: string; isDownload?: boolean } } = {
     'FitTrack - Fitness App': { url: '/AA-ELEMENTS-WEB-PORTFOLIO/fittrack/index.html', isDownload: true },
     'KAY-FITS E-commerce': { url: 'https://djxdtho.github.io/Kayfits/' },
+    'Zari Restaurant Landing': { url: 'https://djxdtho.github.io/Zari-Restaurant' },
   };
   const linkConfig = projectLinks[project.title] || { url: '#' };
 
